@@ -1,4 +1,4 @@
-# R2
+# R2 **Retrieval–Reranker**
 
 This repository provides the framework for **Retrieval–Reranker: A Two–Stage Pipeline for Knowledge Graph Completion**. 
 
