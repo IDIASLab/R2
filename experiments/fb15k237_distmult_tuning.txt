@@ -1,0 +1,84 @@
+##############################
+MLPClassifier Full Results
+##############################
+  hidden_layer_sizes   alpha  learning_rate_init  max_iter  f1_score  accuracy  precision_0  precision_1  recall_0  recall_1
+0         (256, 256)  0.0001               0.001        50  0.831339  0.764181     0.719823     0.779303  0.526486  0.890820
+1         (256, 256)  0.0010               0.001        50  0.820441  0.745673     0.697582     0.760528  0.473652  0.890600
+2         (256, 256)  0.0100               0.001        50  0.814184  0.736178     0.680066     0.753187  0.455097  0.885933
+
+Best Parameters for MLPClassifier:
+{'hidden_layer_sizes': (256, 256), 'alpha': 0.0001, 'learning_rate_init': 0.001, 'max_iter': 50, 'f1_score': 0.8313385232689735, 'accuracy': 0.7641812514984416, 'precision_0': 0.71982270841192, 'precision_1': 0.7793030283546583, 'recall_0': 0.5264864119188853, 'recall_1': 0.8908202263707188}
+
+Classification Report for Best MLPClassifier:
+              precision    recall  f1-score   support
+
+           0       0.72      0.53      0.61     14498
+           1       0.78      0.89      0.83     27212
+
+    accuracy                           0.76     41710
+   macro avg       0.75      0.71      0.72     41710
+weighted avg       0.76      0.76      0.75     41710
+
+
+
+##############################
+XGBClassifier Full Results
+##############################
+   n_estimators  max_depth  scale_pos_weight  learning_rate  f1_score  accuracy  precision_0  precision_1  recall_0  recall_1
+0           300         15               0.5           0.01  0.806327  0.762791     0.629065     0.862696  0.773900  0.756872
+1           300         15               0.5           0.10  0.839106  0.789739     0.698696     0.837815  0.694648  0.840401
+2           300         15               1.0           0.01  0.843693  0.781395     0.754061     0.790695  0.550697  0.904307
+3           300         15               1.0           0.10  0.849773  0.795301     0.746525     0.815205  0.622431  0.887403
+
+Best Parameters for XGBClassifier:
+{'n_estimators': 300.0, 'max_depth': 15.0, 'scale_pos_weight': 1.0, 'learning_rate': 0.1, 'f1_score': 0.8497730231903438, 'accuracy': 0.7953008870774395, 'precision_0': 0.7465254798146923, 'precision_1': 0.815204915265681, 'recall_0': 0.6224306800938061, 'recall_1': 0.8874026164927238}
+
+Classification Report for Best XGBClassifier:
+              precision    recall  f1-score   support
+
+           0       0.75      0.62      0.68     14498
+           1       0.82      0.89      0.85     27212
+
+    accuracy                           0.80     41710
+   macro avg       0.78      0.75      0.76     41710
+weighted avg       0.79      0.80      0.79     41710
+
+
+
+##############################
+LGBMClassifier Full Results
+##############################
+   n_estimators  max_depth  learning_rate  is_unbalance  f1_score  accuracy  precision_0  precision_1  recall_0  recall_1
+0           300         15           0.01          True  0.765026  0.715152     0.571273     0.828273  0.723410  0.710753
+1           300         15           0.01         False  0.823535  0.741357     0.738187     0.742085  0.396537  0.925070
+2           300         15           0.10          True  0.798560  0.754567     0.617688     0.859533  0.771279  0.745664
+3           300         15           0.10         False  0.838612  0.774730     0.738367     0.787281  0.545041  0.897104
+
+Best Parameters for LGBMClassifier:
+{'n_estimators': 300, 'max_depth': 15, 'learning_rate': 0.1, 'is_unbalance': False, 'f1_score': 0.8386121607694951, 'accuracy': 0.7747302805082714, 'precision_0': 0.7383666604373015, 'precision_1': 0.7872807017543859, 'recall_0': 0.5450406952683129, 'recall_1': 0.8971042187270322}
+
+Classification Report for Best LGBMClassifier:
+              precision    recall  f1-score   support
+
+           0       0.74      0.55      0.63     14498
+           1       0.79      0.90      0.84     27212
+
+    accuracy                           0.77     41710
+   macro avg       0.76      0.72      0.73     41710
+weighted avg       0.77      0.77      0.77     41710
+
+
+
+##############################
+Ensemble Model Performance
+##############################
+Ensemble Accuracy: 0.7940
+Ensemble Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.77      0.59      0.66     14498
+           1       0.80      0.90      0.85     27212
+
+    accuracy                           0.79     41710
+   macro avg       0.78      0.75      0.76     41710
+weighted avg       0.79      0.79      0.79     41710
