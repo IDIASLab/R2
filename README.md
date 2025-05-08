@@ -43,7 +43,6 @@ The repository supports three benchmark Knowledge Graph Completion datasets:
 Each dataset folder includes:
 - Raw triple files (train/test/valid)
 - Precomputed entity/relation embeddings
-- Generated negative samples for training reranker models
 
 ---
 
