@@ -1,72 +1,73 @@
+
 # R2 (**Retrieval–Reranker**)
 
-This repository provides the framework for **Retrieval–Reranker: A Two–Stage Pipeline for Knowledge Graph Completion**. 
+This repository provides the framework for **Retrieval–Reranker: A Two–Stage Pipeline for Knowledge Graph Completion**.
 
-We propose R2, a two-stage approach that significantly improves the accuracy of vanilla embedding-based models by (i) rethinking KGC as a classification task, (ii) utilizing machine learning models with complementary architectures to generate plausible KGCs, and (iii) refining predictions by rescoring the list of KGCs suggested by the machine learning models. Our experimental evaluation demonstrates notable performance gains, particularly at lower values of k, across various embedding methods and benchmark datasets.
+We propose **R2**, a two-stage approach that significantly improves the accuracy of vanilla embedding-based models by:
 
-## Repository Structure
-<pre>
+1. Rethinking KGC as a classification task,
+2. Utilizing machine learning models with complementary architectures to generate plausible KGCs,
+3. Refining predictions by rescoring the list of KGCs suggested by the machine learning models.
 
-├─ dbpedia50/
-│  ├─ [Data and embedding files for DBpedia50 dataset]
-│
-├─ fb15k237/
-│  ├─ [Data and embedding files for FB15k-237 dataset]
-│
-├─ wn18rr/
-│  ├─ [Data and embedding files for WN18RR dataset]
-│
-├─ dbpedia50_distmult_reranker.ipynb
-├─ dbpedia50_transe_reranker.ipynb
-├─ fb15k237_distmult_reranker.ipynb
-├─ fb15k237_transe_reranker.ipynb
-├─ wn18rr_distmult_reranker.ipynb
-├─ wn18rr_transe_reranker.ipynb
-└─ link_prediction.py
+Our experimental evaluation demonstrates notable performance gains, particularly at lower values of *k*, across various embedding methods and benchmark datasets.
 
-</pre>
+---
 
+## 📁 Repository Structure
 
-### Datasets
+```
+├── dbpedia50/                  # Dataset files for DBpedia50
+├── fb15k237/                   # Dataset files for FB15k-237
+├── wn18rr/                     # Dataset files for WN18RR
+├── experiments/                # Reranker tuning notebooks and logs
+│   ├── dbpedia50_distmult_tuning.ipynb/.txt
+│   ├── dbpedia50_transe_tuning.ipynb/.txt
+│   ├── fb15k237_distmult_tuning.ipynb/.txt
+│   ├── fb15k237_transe_tuning.ipynb/.txt
+│   ├── wn18rr_distmult_tuning.ipynb/.txt
+│   ├── wn18rr_transe_tuning.ipynb/.txt
+├── link_prediction.py          # Utility functions and reranker pipeline
+├── LICENSE
+├── README.md
+```
 
-The repository includes subfolders for three well-known benchmark datasets:
+---
+
+## 📊 Datasets
+
+The repository supports three benchmark Knowledge Graph Completion datasets:
 - **DBpedia50**
 - **FB15k-237**
 - **WN18RR**
 
-Each dataset folder contains the required data and precomputed embeddings and negative samples created to train the ensemble model.
+Each dataset folder includes:
+- Raw triple files (train/test/valid)
+- Precomputed entity/relation embeddings
+- Generated negative samples for training reranker models
 
-### Reranker Notebooks
+---
 
-For each dataset, two Jupyter notebooks demonstrate how to apply the reranking process:
-- `*_distmult_reranker.ipynb`: Uses DistMult embeddings.
-- `*_transe_reranker.ipynb`: Uses TransE embeddings.
+## 📒 Experiment Notebooks
 
-These notebooks illustrate:
-1. Loading entity and relation embeddings.
-2. Generating positive and negative samples for training.
-3. Training Ensemble Model.
-4. Using Reranker for Link Prediction Pipeline.
+The `experiments/` folder includes Jupyter notebooks for each combination of dataset and embedding model:
 
-### Utility Code
+- `*_distmult_tuning.ipynb`: Uses **DistMult** embeddings.
+- `*_transe_tuning.ipynb`: Uses **TransE** embeddings.
 
-`link_prediction.py` provides shared functions and classes, including:
-- Loading triples and embeddings.
-- Generating negative samples.
-- Computing evaluation metrics (e.g., hits@k).
-- Streamlining the reranking workflow.
+Each notebook guides you through:
+1. Loading embeddings and triples
+2. Constructing positive and negative training samples
+3. Training a reranker (ensemble model)
+4. Evaluating performance using metrics like Hits@k
 
-## Getting Started
+Corresponding `.txt` files contain log outputs or training details.
 
-1. **Install Requirements**:  
-   Ensure you have Python, Jupyter, and the required libraries (e.g., `numpy`, `pandas`, `scikit-learn`, `xgboost`, `lightgbm`, `tqdm`).
+---
 
-2. **Run a Notebook**:  
-   Launch a Jupyter server and open one of the `_reranker.ipynb` notebooks. Follow the steps inside to rerank predictions and view metrics.
+## 🧰 Utility Script
 
-3. **Customize & Extend**:  
-   Adapt the code to other datasets or embedding models by:
-   - Placing your dataset and embedding files in a new folder.
-   - Creating a new notebook that imports and uses `link_prediction.py`.
-
-
+`link_prediction.py` contains shared functions and utilities including:
+- Embedding and triple loaders
+- Negative sampling mechanisms
+- Evaluation metrics (e.g., Hits@k)
+- Complete reranking pipeline
